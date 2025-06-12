@@ -17,20 +17,21 @@ import 'package:spin_flow/widget/tela_login.dart';
 
 class SpinFlowApp extends StatelessWidget {
   const SpinFlowApp({super.key});
- 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'pinFlow',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.purple),
-      initialRoute: Rotas.login,
+      initialRoute: Rotas.dashboardProfessora,
       routes: {
         Rotas.login: (context) => const TelaLogin(),
         Rotas.dashboardAluno: (context) => const TelaDashboardAluno(),
         Rotas.dashboardProfessora: (context) => const TelaDashboardProfessora(),
         Rotas.cadastroCategoriaMusica: (context) => const FormCategoriaMusica(),
-        Rotas.cadastroTipoManutencao: (context) => const FormTipoManutencaoTela(),
+        Rotas.cadastroTipoManutencao: (context) =>
+            const FormTipoManutencaoTela(),
         Rotas.cadastroFabricante: (context) => const FormFabricante(),
         Rotas.cadastroBike: (context) => const FormBike(),
         Rotas.cadastroArtistaBanda: (context) => const FormArtistaBanda(),
