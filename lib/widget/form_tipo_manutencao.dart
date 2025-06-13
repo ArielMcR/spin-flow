@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spin_flow/dao/Manutecao.dart';
+import 'package:spin_flow/dto/ManutencaoDTO.dart';
 import 'package:spin_flow/widget/componentes/campo_texto.dart';
 
 class FormTipoManutencaoTela extends StatefulWidget {
@@ -13,20 +15,32 @@ class _FormTipoManutencaoTelaState extends State<FormTipoManutencaoTela> {
   final _descricaoControle = TextEditingController();
   bool _ativa = true;
 
-  
   @override
   void dispose() {
     _descricaoControle.dispose();
     super.dispose();
   }
 
-  void _salvar() {
+  void _salvar() async {
     if (_formKey.currentState!.validate()) {
-      // Aqui entraria a lógica de salvar
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('salvo com sucesso!')),
+      final dto = DTOManutencao(
+        nome: _descricaoControle.text,
+        ativo: _ativa,
       );
-      Navigator.of(context).pop(); // Volta à tela anterior
+
+      try {
+        await DAOManutencao().salvar(dto);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Salvo com sucesso!')),
+        );
+
+        Navigator.of(context).pop();
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Erro ao salvar: $e')),
+        );
+      }
     }
   }
 

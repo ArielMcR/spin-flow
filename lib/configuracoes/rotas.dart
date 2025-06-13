@@ -23,4 +23,5 @@ class Rotas {
   static const String cadastroAluno = '/cadastro-aluno';
   static const String cadastroTipoManutencao = '/cadastro-tipo-manutencao';
   static const String cadastroGrupoAlunos = '/cadastro-grupo-alunos';
+  static const String listarManutencao = '/listar-manutencao';
 }
